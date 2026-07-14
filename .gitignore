@@ -1,0 +1,9 @@
+# Confidential client-facing proposal documents — not for public repo
+mts-website-pitch.html
+mts-website-watermarked.html
+
+# Internal dev handover doc — not part of the deployed site
+mts-handover.html
+
+# Local Claude Code settings
+.claude/

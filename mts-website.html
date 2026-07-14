@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Megan's Technical Services — Sound Design &amp; Live Production</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500&family=DM+Mono:wght@400;500&display=swap" />
+<style>
+  :root{
+    --bg:#07090F; --surface:#0D1220; --surfaceHov:#131A2E;
+    --accent:#3D55F2; --accentBright:#5B70FF; --accentDim:#3D55F220; --accentBorder:#3D55F240;
+    --text:#EEE9E3; --textSoft:#C4C9D8; --muted:#7A8299; --border:#162038;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden}
+  a{text-decoration:none}
+  .mono{font-family:'DM Mono',monospace;letter-spacing:0.12em;text-transform:uppercase}
+  .display{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.03em}
+  .wrap{max-width:1120px;margin:0 auto}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  .h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,5vw,56px);font-weight:700;letter-spacing:-0.03em;line-height:1.06;margin:0}
+  .grad{background:linear-gradient(90deg,#5B70FF,#8B9FFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+  /* ── Logo ── */
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo .badge{width:38px;height:38px;border-radius:6px;flex-shrink:0;background:linear-gradient(135deg,#3D55F2,#1E2FA8);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px #3D55F250;font-family:'Space Grotesk',sans-serif;font-weight:800;color:#fff;font-size:13px;letter-spacing:-0.04em}
+  .logo .nm{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:-0.02em;line-height:1}
+  .logo.large .badge{width:56px;height:56px;font-size:20px}
+  .logo.large .nm{font-size:18px}
+  .logo.large .tg{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px}
+
+  /* ── Nav ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:16px 48px;display:flex;justify-content:space-between;align-items:center;background:#07090Ff2;backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  nav .links{display:flex;gap:36px;align-items:center}
+  nav .links a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+  .btn-quote{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,#3D55F2,#1E2FA8);padding:11px 22px;border-radius:4px;font-weight:500;box-shadow:0 0 16px #3D55F250}
+  .hamb{display:none}
+
+  section{padding:96px 48px;box-sizing:border-box;border-top:1px solid var(--border)}
+
+  /* ── Hero ── */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 48px 0;position:relative;overflow:hidden;border-top:none}
+  .hero .glow1{position:absolute;top:10%;right:-8%;width:700px;height:700px;background:radial-gradient(circle,#3D55F218 0%,transparent 65%);pointer-events:none}
+  .hero .glow2{position:absolute;bottom:15%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,#1E2FA820 0%,transparent 65%);pointer-events:none}
+  .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(52px,9vw,104px);font-weight:800;letter-spacing:-0.04em;line-height:0.95;margin:0 0 16px}
+  .hero .sub{font-size:17px;color:var(--textSoft);max-width:500px;line-height:1.75;margin:32px 0 52px}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:72px}
+  .btn-primary{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;background:linear-gradient(135deg,#3D55F2,#1E2FA8);padding:17px 34px;border-radius:4px;box-shadow:0 0 24px #3D55F250}
+  .btn-ghost{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:500;color:var(--text);padding:17px 34px;border-radius:4px;border:1px solid var(--border)}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;max-width:680px}
+  .pillars .p{background:var(--surface);padding:22px 24px}
+  .pillars .p .ico{font-size:20px;margin-bottom:8px}
+  .pillars .p .w{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px}
+  .pillars .p .x{font-size:12px;color:var(--textSoft);line-height:1.5}
+  .wavewrap{margin-top:72px;opacity:0.28;display:flex;align-items:flex-end;gap:2px;height:72px}
+  .wavewrap i{flex:1;background:#5B70FF;border-radius:1px;display:block}
+
+  /* ── About ── */
+  .about{background:var(--surface);display:flex;gap:56px;flex-wrap:wrap;align-items:center;padding:64px 48px}
+  .about p{font-size:16px;color:var(--textSoft);line-height:1.78;flex:1 1 380px;max-width:540px;margin:0}
+  .about em{color:var(--text);font-style:normal}
+  .stats{display:flex;gap:48px;flex:1 1 260px;flex-wrap:wrap}
+  .stats .v{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-0.04em;line-height:1;white-space:nowrap}
+  .stats .k{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:6px}
+
+  /* ── Credentials ── */
+  .creds{background:var(--bg);padding:40px 48px}
+  .creds .row{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+  .creds .lab{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;white-space:nowrap}
+  .creds .pills{display:flex;gap:10px;flex-wrap:wrap;flex:1}
+  .creds .pill{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--textSoft);background:var(--surface);border:1px solid var(--border);padding:8px 14px;border-radius:999px}
+
+  /* ── Cards grid (expertise) ── */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;margin-top:52px;background:var(--border)}
+  .cards .c{background:var(--surface);padding:40px 30px;border-top:3px solid transparent}
+  .cards .c:first-child{border-top-color:var(--accent)}
+  .cards .c .tg{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px}
+  .cards .c h3{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;letter-spacing:-0.02em;margin-bottom:14px;line-height:1.2}
+  .cards .c p{font-size:13.5px;color:var(--textSoft);line-height:1.74}
+
+  /* ── Work ── */
+  .work{background:var(--surface)}
+  .work .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+  .work .intro{font-size:13.5px;color:var(--textSoft);max-width:340px;line-height:1.65;text-align:right;margin:0}
+  .rows{display:flex;flex-direction:column;gap:2px}
+  .rows .r{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:24px 28px;background:var(--bg);border-left:3px solid transparent}
+  .rows .r:first-child{border-left-color:var(--accent)}
+  .rows .ti{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;letter-spacing:-0.02em}
+  .rows .lo{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.08em;margin-top:5px}
+  .rows .ty{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#5B70FF;background:#3D55F220;border:1px solid #3D55F240;padding:6px 12px;border-radius:3px;white-space:nowrap}
+
+  /* ── Testimonials ── */
+  .testi .holder{margin-top:48px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:48px 40px;display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+  .testi .holder p{font-size:16px;color:var(--textSoft);line-height:1.7;flex:1 1 360px;margin:0}
+  .testi .holder a{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#fff;background:linear-gradient(135deg,#3D55F2,#1E2FA8);padding:14px 26px;border-radius:4px;white-space:nowrap;box-shadow:0 0 18px #3D55F250}
+
+  /* ── Gallery ── */
+  .gallery{background:var(--surface)}
+  .gallery .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+  .gallery .intro{font-size:13.5px;color:var(--textSoft);max-width:340px;line-height:1.65;text-align:right;margin:0}
+  .ig-card{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:44px 40px}
+  .ig-card .l{display:flex;align-items:center;gap:20px}
+  .ig-card h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+  .ig-card .d{font-size:13.5px;color:var(--textSoft)}
+  .ig-card .go{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#5B70FF;white-space:nowrap}
+
+  /* ── Equipment ── */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+  .tabs .tb{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:9px 18px;border-radius:3px;color:var(--muted);border:1px solid var(--border)}
+  .tabs .tb.on{color:#fff;background:linear-gradient(135deg,#3D55F2,#1E2FA8);border-color:transparent}
+  .eqhead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;gap:24px;flex-wrap:wrap}
+  .eqhead .intro{font-size:13.5px;color:var(--textSoft);max-width:360px;line-height:1.65;text-align:right;margin:0}
+  .eqs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--border)}
+  .eqs .e{background:var(--surface);display:flex;flex-direction:column}
+  .eqs .e .ph{background:var(--bg);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:22px;border-bottom:1px solid var(--border)}
+  .eqs .e .ph img{max-width:100%;max-height:100%;object-fit:contain}
+  .eqs .e .ph.fill{padding:0}
+  .eqs .e .ph.fill img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover}
+  .eqs .e .bd{padding:28px 30px 30px;display:flex;flex-direction:column;gap:14px;flex:1}
+  .eqs .e .br{display:flex;align-items:center;gap:10px}
+  .eqs .e .cat{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+  .eqs .e h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.02em;line-height:1.2}
+  .eqs .e p{font-size:13.5px;color:var(--textSoft);line-height:1.7;flex:1}
+  .eqs .e .foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+  .eqs .e .pr{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:#5B70FF}
+  .eqs .e .enq{display:inline-flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:#25D366;padding:11px 18px;border-radius:3px;box-shadow:0 0 14px rgba(37,211,102,0.3)}
+
+  /* ── Contact ── */
+  .contact{background:var(--surface)}
+  .contact .inner{max-width:680px;margin:0 auto}
+  .contact .lede{font-size:15px;color:var(--textSoft);line-height:1.75;margin:18px 0 28px;max-width:520px}
+  .wa-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:13px 22px;border-radius:4px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;letter-spacing:-0.01em;margin-bottom:14px;box-shadow:0 0 18px rgba(37,211,102,0.35)}
+  .or{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 40px}
+  .field{margin-bottom:20px}
+  .field label{display:block;font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px}
+  .field .box{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:14px 16px;color:var(--muted);font-size:15px}
+  .field .box.area{min-height:120px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .send{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:#fff;background:linear-gradient(135deg,#3D55F2,#1E2FA8);padding:18px 36px;border-radius:4px;box-shadow:0 0 24px #3D55F250;margin-top:4px}
+
+  /* ── Footer ── */
+  footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px 40px}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:40px}
+  .foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+  .foot-cols .lab{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px}
+  .foot-cols a,.foot-cols .line{display:block;font-size:13.5px;color:var(--textSoft);margin-bottom:8px}
+  .foot-cols .loc{font-size:13.5px;color:var(--muted);max-width:220px;line-height:1.5}
+  .foot-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .foot-bottom .c{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.05em}
+
+  /* ── Floating WhatsApp ── */
+  .float-wa{position:fixed;right:22px;bottom:22px;z-index:850;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 22px;border-radius:999px;box-shadow:0 8px 28px rgba(37,211,102,0.45);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px}
+
+  @media (max-width:760px){
+    nav .links{display:none}
+    .hamb{display:flex}
+  }
+  @media (max-width:640px){
+    nav{padding:16px 20px}
+    section,.about,.creds,footer,.hero{padding-left:20px;padding-right:20px}
+    .cards,.eqs{grid-template-columns:1fr}
+    .grid2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><div class="badge">MTS</div><div class="nm">Megan's Technical Services</div></div>
+  <div class="links">
+    <a href="#expertise">Expertise</a>
+    <a href="#work">Work</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#equipment">Equipment</a>
+    <a href="#contact" class="btn-quote">Get a Quote</a>
+  </div>
+  <svg class="hamb" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#EEE9E3" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="glow1"></div><div class="glow2"></div>
+  <div style="max-width:1000px;position:relative">
+    <div class="eyebrow">Sound Design &amp; Technical Production — KwaZulu-Natal, SA</div>
+    <h1>Innovate.<br>Illuminate.<br><span class="grad">Captivate.</span></h1>
+    <p class="sub">Complete system overhauls, live sound production, and acoustic treatment — built around your actual needs. Honest advice. Nothing unnecessary.</p>
+    <div class="btn-row"><a href="#contact" class="btn-primary">Request a Quote</a><a href="#work" class="btn-ghost">See Past Work</a></div>
+    <div class="pillars">
+      <div class="p"><div class="ico">⚙️</div><div class="w">Innovate</div><div class="x">Smart systems designed from the ground up</div></div>
+      <div class="p"><div class="ico">💡</div><div class="w">Illuminate</div><div class="x">Precision audio that makes every space sing</div></div>
+      <div class="p"><div class="ico">🎙️</div><div class="w">Captivate</div><div class="x">Live sound that holds a crowd, first note to last</div></div>
+    </div>
+  </div>
+  <div class="wavewrap" id="wave"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <p>Megan Holder has worked in live production since 1995 — over three decades spanning theatre, touring shows, and major international events, including a stint as Technical Delivery &amp; Crew Manager for <em>Expo 2020 in Dubai</em>. A multiple-award-winning sound designer for orchestral and musical productions, she now runs Megan's Technical Services with one principle: deliver exactly what a client needs, build it to last, and never sell anyone equipment they don't need.</p>
+  <div class="stats">
+    <div><div class="v grad">30+</div><div class="k">Years in live production</div></div>
+    <div><div class="v grad">Expo 2020</div><div class="k">Dubai — crew &amp; delivery</div></div>
+    <div><div class="v grad">100%</div><div class="k">Honest recommendations</div></div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="creds">
+  <div class="wrap row">
+    <div class="lab">Trained &amp; Certified</div>
+    <div class="pills">
+      <span class="pill">Dante Level 2 Certified</span>
+      <span class="pill">L-Acoustics System &amp; Workflow</span>
+      <span class="pill">QLab 4 &amp; 5 Programming</span>
+      <span class="pill">Sennheiser EW-DX &amp; D6000</span>
+      <span class="pill">Certified Rigging &amp; Fall Arrest</span>
+      <span class="pill">Climbing Equipment Inspection</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="wrap">
+    <div class="eyebrow">Areas of Expertise</div>
+    <div class="h2">What MTS does.</div>
+    <div class="cards">
+      <div class="c"><div class="tg">Sound Design</div><h3>Award-Winning Sound Design</h3><p>Multiple-award-winning sound design for orchestral and musical productions. QLab 4 &amp; 5 programming, Dante Level 2 certified, and L-Acoustics system workflows for shows of every scale.</p></div>
+      <div class="c"><div class="tg">Live Sound</div><h3>Live Sound &amp; Major Events</h3><p>Crew and technical delivery management for major international events — including Expo 2020 Dubai — plus touring productions like Aladdin and immersive exhibitions.</p></div>
+      <div class="c"><div class="tg">System Makeovers</div><h3>System Makeovers &amp; Future-Proofing</h3><p>Complete venue and studio system overhauls — soundproofing, theatre build consulting, performance curtains, sprung floors and full AV integration, designed to last and scale.</p></div>
+      <div class="c"><div class="tg">Rigging &amp; Stage</div><h3>Rigging, Safety &amp; Stage Management</h3><p>Certified rope rigging and fall arrest technician with climbing equipment inspection and RF awareness. Stage manager trained to cue ballet, opera and musicals.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="work">
+  <div class="wrap">
+    <div class="eyebrow">Selected Work</div>
+    <div class="head"><div class="h2">Past projects.</div><p class="intro">A selection from over thirty years across theatre, touring productions and major international events.</p></div>
+    <div class="rows">
+      <div class="r"><div><div class="ti">Expo 2020 — Technical Delivery &amp; Crew Manager</div><div class="lo">Dubai, UAE</div></div><span class="ty">Live Events</span></div>
+      <div class="r"><div><div class="ti">Aladdin — Touring Production (QLab 5)</div><div class="lo">Touring</div></div><span class="ty">Sound Design</span></div>
+      <div class="r"><div><div class="ti">St Anne's Diocesan College — AV &amp; Technical</div><div class="lo">South Africa</div></div><span class="ty">Systems Install</span></div>
+      <div class="r"><div><div class="ti">UCLA Touring Immersive Art Exhibition</div><div class="lo">Touring</div></div><span class="ty">Sound Design</span></div>
+      <div class="r"><div><div class="ti">Danville &amp; Besant Theatre Builds</div><div class="lo">South Africa</div></div><span class="ty">Build Consultant</span></div>
+      <div class="r"><div><div class="ti">Birth of African Opera — The Playhouse Company</div><div class="lo">KwaZulu-Natal, SA</div></div><span class="ty">Stage Manager</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="wrap">
+    <div class="eyebrow">What Clients Say</div>
+    <div class="h2">Trusted by the people she works with.</div>
+    <div class="holder">
+      <p>Megan's reputation is built on word of mouth — three decades of honest work and repeat clients. Reviews from recent projects will appear here soon.</p>
+      <a href="https://www.facebook.com/share/1CvqHngWnW/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Leave a Review</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery">
+  <div class="wrap">
+    <div class="eyebrow">Gallery</div>
+    <div class="head"><div class="h2">On the job.</div><p class="intro">Moments from events, builds and productions Megan has delivered.</p></div>
+    <a class="ig-card" href="https://www.instagram.com/meganstechnicalservices" target="_blank" rel="noopener noreferrer">
+      <div class="l">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#5B70FF" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#5B70FF"/></svg>
+        <div><h3>See the latest work on Instagram</h3><div class="d">Photos from recent events and installs are posted to @meganstechnicalservices.</div></div>
+      </div>
+      <span class="go">View Instagram →</span>
+    </a>
+  </div>
+</section>
+
+<!-- EQUIPMENT -->
+<section id="equipment">
+  <div class="wrap">
+    <div class="eyebrow">Equipment</div>
+    <div class="eqhead"><div class="h2">Buy or enquire.</div><p class="intro">Trusted brands Megan specifies and supplies. Tell her your venue and budget — she'll recommend only what you actually need.</p></div>
+    <div class="tabs"><span class="tb on">All</span><span class="tb">Allen &amp; Heath</span><span class="tb">Wharfedale Pro</span><span class="tb">Sennheiser</span></div>
+    <div class="eqs">
+      <div class="e"><div class="ph"><img src="images/equipment/sq6.png" alt="Allen &amp; Heath SQ-6 Digital Mixer" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Allen &amp; Heath — Mixing Desk</span></div><h3>Allen &amp; Heath SQ-6 Digital Mixer</h3><p>48-channel, 96kHz digital console on the XCVI FPGA core. A workhorse for live sound — full processing, 8 multi-FX engines and a fast, intuitive workflow.</p><div class="foot"><span class="pr">POA</span><span class="enq">Enquire</span></div></div></div>
+      <div class="e"><div class="ph fill"><img src="images/equipment/avantis.jpg" alt="Allen &amp; Heath Avantis" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Allen &amp; Heath — Mixing Desk</span></div><h3>Allen &amp; Heath Avantis</h3><p>64-channel / 42-bus console with dual Full HD touchscreens and dLive-class processing. The step up for larger productions and touring work.</p><div class="foot"><span class="pr">POA</span><span class="enq">Enquire</span></div></div></div>
+      <div class="e"><div class="ph"><img src="images/equipment/dx168.png" alt="Allen &amp; Heath DX168 Stage Box" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Allen &amp; Heath — dSNAKE / Stage Rack</span></div><h3>Allen &amp; Heath DX168 Stage Box</h3><p>Rugged 16-in / 8-out portable expander with recallable preamps. Runs all your I/O to the desk over a single cable. Pairs with SQ and dLive.</p><div class="foot"><span class="pr">POA</span><span class="enq">Enquire</span></div></div></div>
+      <div class="e"><div class="ph"><img src="images/equipment/ar2412.png" alt="Allen &amp; Heath AR2412 AudioRack" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Allen &amp; Heath — dSNAKE / Stage Rack</span></div><h3>Allen &amp; Heath AR2412 AudioRack</h3><p>24-in / 12-out remote rack on the dSNAKE protocol — position your stage I/O up to 100m from the desk over one Cat5 cable. Qu, SQ and Avantis compatible.</p><div class="foot"><span class="pr">POA</span><span class="enq">Enquire</span></div></div></div>
+      <div class="e"><div class="ph"><img src="images/equipment/titan-ax15.png" alt="Wharfedale Pro Titan-AX15" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Wharfedale Pro — Powered Speaker</span></div><h3>Wharfedale Pro Titan-AX15</h3><p>Bi-amplified 15-inch active loudspeaker with IRIS-X compression driver and Q-Bit DSP. Lightweight, IP54-rated and reliable for stage, install or mobile use.</p><div class="foot"><span class="pr">POA</span><span class="enq">Enquire</span></div></div></div>
+      <div class="e"><div class="ph"><img src="images/equipment/wla-210x.png" alt="Wharfedale Pro WLA-210X" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Wharfedale Pro — Line Array</span></div><h3>Wharfedale Pro WLA-210X</h3><p>Long-throw passive line array element with dual custom 10-inch drivers. Scalable coverage for larger venues and outdoor events.</p><div class="foot"><span class="pr">POA</span><span class="enq">Enquire</span></div></div></div>
+      <div class="e"><div class="ph"><img src="images/equipment/ew-dx-835s.png" alt="Sennheiser EW-DX 835-S SET" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Sennheiser — Wireless Mic System</span></div><h3>Sennheiser EW-DX 835-S SET</h3><p>Dual-channel digital UHF handheld system with the renowned e835 capsule and EM 2 rackmount receiver. Auto-scan, Bluetooth sync, e-Ink displays. Megan is EW-DX trained.</p><div class="foot"><span class="pr">POA</span><span class="enq">Enquire</span></div></div></div>
+      <div class="e"><div class="ph"><img src="images/equipment/e835.png" alt="Sennheiser e835 Vocal Mic" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Sennheiser — Microphone</span></div><h3>Sennheiser e835 Vocal Mic</h3><p>Industry-standard cardioid dynamic vocal mic. Clear, present voice reproduction with strong feedback rejection — a reliable live workhorse.</p><div class="foot"><span class="pr">POA</span><span class="enq">Enquire</span></div></div></div>
+      <div class="e"><div class="ph"><img src="images/equipment/d6000.png" alt="Sennheiser D6000 Series" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Sennheiser — Digital Wireless</span></div><h3>Sennheiser D6000 Series</h3><p>High-density digital wireless for demanding multi-channel productions. Maximum reliability where channel count and spectrum efficiency matter. Megan is D6000 trained.</p><div class="foot"><span class="pr">POA</span><span class="enq">Enquire</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="inner">
+    <div class="eyebrow">Get in Touch</div>
+    <div class="h2">Request a quote.</div>
+    <p class="lede">Tell Megan what you're working with. She'll give you a straight answer about what's possible, what's practical, and what's actually worth spending money on. Based in KwaZulu-Natal and available for projects worldwide.</p>
+    <a class="wa-btn" href="https://wa.me/27822534450" target="_blank" rel="noopener noreferrer">
+      <svg width="20" height="20" viewBox="0 0 32 32" fill="#fff"><path d="M16.04 4C9.93 4 4.98 8.95 4.98 15.06c0 1.96.51 3.87 1.49 5.56L4.9 27l6.55-1.52a11.02 11.02 0 0 0 4.58 1c6.11 0 11.06-4.95 11.06-11.06C27.1 8.95 22.15 4 16.04 4zm0 20.13c-1.46 0-2.9-.39-4.15-1.13l-.3-.18-3.89.9.83-3.79-.2-.31a8.94 8.94 0 0 1-1.37-4.79c0-4.95 4.03-8.98 8.98-8.98 4.95 0 8.98 4.03 8.98 8.98 0 4.95-4.03 8.98-8.98 8.98z"/></svg>
+      Message on WhatsApp
+    </a>
+    <p class="or">Or fill in the form below</p>
+    <div class="grid2">
+      <div class="field"><label>Name</label><div class="box">Your full name</div></div>
+      <div class="field"><label>Email</label><div class="box">you@example.com</div></div>
+    </div>
+    <div class="field"><label>Project Type</label><div class="box">Select a category ▾</div></div>
+    <div class="field"><label>Tell Megan about your project</label><div class="box area">What do you currently have, what are you trying to achieve, and what's your timeline?</div></div>
+    <span class="send">Send Request</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="logo large"><div class="badge">MTS</div><div><div class="nm">Megan's Technical Services</div><div class="tg">Innovate · Illuminate · Captivate</div></div></div>
+      <div class="foot-cols">
+        <div>
+          <div class="lab">Contact</div>
+          <a href="mailto:meganstechnicalservices@gmail.com">meganstechnicalservices@gmail.com</a>
+          <a href="tel:0822534450">082 253 4450</a>
+          <div class="loc">KwaZulu-Natal, South Africa · Available worldwide</div>
+        </div>
+        <div>
+          <div class="lab">Follow</div>
+          <a href="https://wa.me/27822534450" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href="https://www.facebook.com/share/1CvqHngWnW/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.instagram.com/meganstechnicalservices" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.linkedin.com/in/megan-holder-29bb40254" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="c">© 2025 Megan's Technical Services</div>
+      <div class="c mono">Innovate · Illuminate · Captivate</div>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/27822534450" target="_blank" rel="noopener noreferrer">
+  <svg width="26" height="26" viewBox="0 0 32 32" fill="#fff"><path d="M16.04 4C9.93 4 4.98 8.95 4.98 15.06c0 1.96.51 3.87 1.49 5.56L4.9 27l6.55-1.52a11.02 11.02 0 0 0 4.58 1c6.11 0 11.06-4.95 11.06-11.06C27.1 8.95 22.15 4 16.04 4z"/></svg>
+  Chat on WhatsApp
+</a>
+
+<script>
+  // Build the decorative hero waveform (visual only).
+  (function(){
+    var wave = document.getElementById('wave');
+    if(!wave) return;
+    var n = 200;
+    for(var i=0;i<n;i++){
+      var v = Math.abs(Math.sin(i*0.22)*0.52 + Math.sin(i*0.57)*0.26 + Math.sin(i*1.13)*0.14 + Math.sin(i*2.71)*0.08);
+      v = Math.max(0.05, v);
+      var bar = document.createElement('i');
+      bar.style.height = (v*100) + '%';
+      wave.appendChild(bar);
+    }
+  })();
+</script>
+</body>
+</html>
