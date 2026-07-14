@@ -101,11 +101,6 @@
   .gallery{background:var(--surface)}
   .gallery .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap}
   .gallery .intro{font-size:13.5px;color:var(--textSoft);max-width:340px;line-height:1.65;text-align:right;margin:0}
-  .ig-card{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:44px 40px}
-  .ig-card .l{display:flex;align-items:center;gap:20px}
-  .ig-card h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
-  .ig-card .d{font-size:13.5px;color:var(--textSoft)}
-  .ig-card .go{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#5B70FF;white-space:nowrap}
 
   /* ── Equipment ── */
   .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
@@ -164,8 +159,50 @@
   /* ── Floating WhatsApp ── */
   .float-wa{position:fixed;right:22px;bottom:22px;z-index:850;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 22px;border-radius:999px;box-shadow:0 8px 28px rgba(37,211,102,0.45);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px}
 
+  /* ── Nav account menu ── */
+  .nav-account{position:relative}
+  .nav-account-btn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);background:transparent;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:5px}
+  .nav-account-btn .car{font-size:9px;transition:transform 0.2s}
+  .nav-account-btn.open .car{transform:rotate(180deg)}
+  .nav-account-menu{position:absolute;top:calc(100% + 16px);right:0;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:8px;min-width:170px;display:none;flex-direction:column;gap:2px;box-shadow:0 12px 32px rgba(0,0,0,0.4);z-index:900}
+  .nav-account-menu.open{display:flex}
+  .nav-account-menu a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--textSoft);padding:10px 12px;border-radius:4px}
+  .nav-account-menu a:hover{background:var(--surfaceHov);color:#fff}
+
+  /* ── Testimonial cards ── */
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;margin-top:48px;background:var(--border)}
+  .tcard{background:var(--surface);padding:32px 28px;display:flex;flex-direction:column;gap:16px;border-top:3px solid transparent}
+  .tcard:first-child{border-top-color:var(--accent)}
+  .tcard .tq{font-size:14.5px;color:var(--textSoft);line-height:1.7;font-style:italic}
+  .tcard .tby{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
+
+  /* ── Gallery carousel ── */
+  .carousel{position:relative;margin-top:48px}
+  .car-track-wrap{overflow:hidden;border-radius:8px;border:1px solid var(--border)}
+  .car-track{display:flex;transition:transform 0.4s ease}
+  .car-slide{flex:0 0 100%;aspect-ratio:16/9;background:var(--bg);display:flex;align-items:center;justify-content:center}
+  .car-slide .ph-txt{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase}
+  .car-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#07090Fcc;border:1px solid var(--border);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10}
+  .car-prev{left:14px}
+  .car-next{right:14px}
+  .car-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+  .car-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;border:none;padding:0}
+  .car-dot.on{background:var(--accent)}
+
+  /* ── POPIA consent ── */
+  .popia-field{display:flex;align-items:flex-start;gap:10px;margin-bottom:20px}
+  .popia-field input{accent-color:var(--accent);width:16px;height:16px;margin-top:3px;flex-shrink:0;cursor:pointer}
+  .popia-field label{font-size:12.5px;color:var(--muted);line-height:1.6;cursor:pointer}
+
+  /* ── Footer legal links ── */
+  .foot-legal{display:flex;gap:18px;flex-wrap:wrap}
+  .foot-legal a{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.05em}
+
   @media (max-width:760px){
-    nav .links{display:none}
+    nav .links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:#07090Ff2;backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:8px 24px 20px}
+    nav .links.open{display:flex}
+    nav .links a,nav .nav-account{padding:14px 0;width:100%}
+    nav .nav-account-menu{position:static;box-shadow:none;width:100%;margin-top:8px}
     .hamb{display:flex}
   }
   @media (max-width:640px){
@@ -180,14 +217,21 @@
 
 <nav>
   <div class="logo"><div class="badge">MTS</div><div class="nm">Megan's Technical Services</div></div>
-  <div class="links">
+  <div class="links" id="navLinks">
     <a href="#expertise">Expertise</a>
     <a href="#work">Work</a>
     <a href="#gallery">Gallery</a>
     <a href="#equipment">Equipment</a>
+    <div class="nav-account" id="navAccount">
+      <button class="nav-account-btn" id="acctBtn">Existing Customers <span class="car">▾</span></button>
+      <div class="nav-account-menu" id="acctMenu">
+        <a href="https://eventory-mts.com/Landing" target="_blank" rel="noopener noreferrer">Log In</a>
+        <a href="https://eventory-mts.com/Landing" target="_blank" rel="noopener noreferrer">Create Account</a>
+      </div>
+    </div>
     <a href="#contact" class="btn-quote">Get a Quote</a>
   </div>
-  <svg class="hamb" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#EEE9E3" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  <svg class="hamb" id="hambIcon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#EEE9E3" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
 </nav>
 
 <!-- HERO -->
@@ -267,9 +311,10 @@
   <div class="wrap">
     <div class="eyebrow">What Clients Say</div>
     <div class="h2">Trusted by the people she works with.</div>
-    <div class="holder">
-      <p>Megan's reputation is built on word of mouth — three decades of honest work and repeat clients. Reviews from recent projects will appear here soon.</p>
-      <a href="https://www.facebook.com/share/1CvqHngWnW/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Leave a Review</a>
+    <div class="testi-grid">
+      <div class="tcard"><p class="tq">Testimonial coming soon.</p><div class="tby">Client name — Project</div></div>
+      <div class="tcard"><p class="tq">Testimonial coming soon.</p><div class="tby">Client name — Project</div></div>
+      <div class="tcard"><p class="tq">Testimonial coming soon.</p><div class="tby">Client name — Project</div></div>
     </div>
   </div>
 </section>
@@ -279,13 +324,30 @@
   <div class="wrap">
     <div class="eyebrow">Gallery</div>
     <div class="head"><div class="h2">On the job.</div><p class="intro">Moments from events, builds and productions Megan has delivered.</p></div>
-    <a class="ig-card" href="https://www.instagram.com/meganstechnicalservices" target="_blank" rel="noopener noreferrer">
-      <div class="l">
-        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#5B70FF" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#5B70FF"/></svg>
-        <div><h3>See the latest work on Instagram</h3><div class="d">Photos from recent events and installs are posted to @meganstechnicalservices.</div></div>
+    <div class="carousel" id="gallCarousel">
+      <div class="car-track-wrap">
+        <div class="car-track" id="carTrack">
+          <div class="car-slide"><span class="ph-txt">Photo 1 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 2 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 3 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 4 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 5 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 6 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 7 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 8 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 9 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 10 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 11 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 12 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 13 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 14 — coming soon</span></div>
+          <div class="car-slide"><span class="ph-txt">Photo 15 — coming soon</span></div>
+        </div>
       </div>
-      <span class="go">View Instagram →</span>
-    </a>
+      <button class="car-btn car-prev" id="carPrev" aria-label="Previous photo">‹</button>
+      <button class="car-btn car-next" id="carNext" aria-label="Next photo">›</button>
+      <div class="car-dots" id="carDots"></div>
+    </div>
   </div>
 </section>
 
@@ -340,7 +402,11 @@
         <div class="field other-field" id="otherField"><label>Please specify</label><input type="text" name="otherDetail" placeholder="Tell Megan what you mean by 'other'"></div>
       </div>
       <div class="field"><label>Tell Megan about your project</label><textarea name="message" placeholder="What do you currently have, what are you trying to achieve, and what's your timeline?" required></textarea></div>
-      <button type="submit" class="send">Send Request</button>
+      <div class="popia-field">
+        <input type="checkbox" id="popiaCheck" name="popiaConsent" value="Consented" required>
+        <label for="popiaCheck">I consent to Megan's Technical Services collecting and processing my personal information in this form, in accordance with POPIA, solely to respond to this enquiry.</label>
+      </div>
+      <button type="submit" class="send" id="sendBtn">Send Request</button>
     </form>
   </div>
 </section>
@@ -368,6 +434,10 @@
     </div>
     <div class="foot-bottom">
       <div class="c">© 2025 Megan's Technical Services</div>
+      <div class="foot-legal">
+        <a href="documents/terms-and-conditions.pdf" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>
+        <a href="documents/popia.pdf" target="_blank" rel="noopener noreferrer">POPIA</a>
+      </div>
       <div class="c mono">Innovate · Illuminate · Captivate</div>
     </div>
   </div>
@@ -417,6 +487,85 @@
           card.style.display = show ? '' : 'none';
         });
       });
+    });
+  })();
+
+  // Mobile hamburger nav toggle.
+  (function(){
+    var hamb = document.getElementById('hambIcon');
+    var links = document.getElementById('navLinks');
+    if(!hamb || !links) return;
+    hamb.addEventListener('click', function(){
+      links.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ links.classList.remove('open'); });
+    });
+  })();
+
+  // Existing Customers account menu toggle.
+  (function(){
+    var btn = document.getElementById('acctBtn');
+    var menu = document.getElementById('acctMenu');
+    if(!btn || !menu) return;
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = menu.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+    });
+    document.addEventListener('click', function(e){
+      if(!menu.contains(e.target) && e.target !== btn){
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+      }
+    });
+  })();
+
+  // Gallery carousel.
+  (function(){
+    var track = document.getElementById('carTrack');
+    var prev = document.getElementById('carPrev');
+    var next = document.getElementById('carNext');
+    var dotsWrap = document.getElementById('carDots');
+    if(!track || !prev || !next || !dotsWrap) return;
+    var count = track.children.length;
+    var index = 0;
+
+    for(var i=0;i<count;i++){
+      var dot = document.createElement('button');
+      dot.className = 'car-dot' + (i===0 ? ' on' : '');
+      dot.setAttribute('aria-label', 'Go to photo ' + (i+1));
+      (function(idx){
+        dot.addEventListener('click', function(){ goTo(idx); });
+      })(i);
+      dotsWrap.appendChild(dot);
+    }
+    var dots = dotsWrap.children;
+
+    function goTo(i){
+      index = (i + count) % count;
+      track.style.transform = 'translateX(-' + (index*100) + '%)';
+      for(var d=0; d<dots.length; d++){
+        dots[d].classList.toggle('on', d === index);
+      }
+    }
+    prev.addEventListener('click', function(){ goTo(index-1); });
+    next.addEventListener('click', function(){ goTo(index+1); });
+  })();
+
+  // Contact form: open a pre-filled WhatsApp chat alongside the email submission.
+  // (A browser can't silently send a WhatsApp message on its own — the visitor
+  // still taps send inside WhatsApp — this just gets it ready for them.)
+  (function(){
+    var form = document.querySelector('#contact form');
+    if(!form) return;
+    form.addEventListener('submit', function(){
+      var name = form.querySelector('[name="name"]').value;
+      var email = form.querySelector('[name="email"]').value;
+      var types = Array.from(form.querySelectorAll('[name="projectType"]:checked')).map(function(cb){ return cb.value; }).join(', ') || 'Not specified';
+      var message = form.querySelector('[name="message"]').value;
+      var waText = 'Hi Megan, quote request from ' + name + ' (' + email + '). Project type: ' + types + '. ' + message;
+      window.open('https://wa.me/27822534450?text=' + encodeURIComponent(waText), '_blank');
     });
   })();
 </script>
