@@ -7,3 +7,6 @@ mts-handover.html
 
 # Local Claude Code settings
 .claude/
+
+# Firebase CLI local cache
+.firebase/
