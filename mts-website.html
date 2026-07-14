@@ -102,26 +102,12 @@
   .gallery .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap}
   .gallery .intro{font-size:13.5px;color:var(--textSoft);max-width:340px;line-height:1.65;text-align:right;margin:0}
 
-  /* ── Equipment ── */
-  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
-  .tabs .tb{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:9px 18px;border-radius:3px;color:var(--muted);border:1px solid var(--border);background:transparent;cursor:pointer}
-  .tabs .tb.on{color:#fff;background:linear-gradient(135deg,#3D55F2,#1E2FA8);border-color:transparent}
-  .eqhead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;gap:24px;flex-wrap:wrap}
-  .eqhead .intro{font-size:13.5px;color:var(--textSoft);max-width:360px;line-height:1.65;text-align:right;margin:0}
-  .eqs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--border)}
-  .eqs .e{background:var(--surface);display:flex;flex-direction:column}
-  .eqs .e .ph{background:var(--bg);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:22px;border-bottom:1px solid var(--border)}
-  .eqs .e .ph img{max-width:100%;max-height:100%;object-fit:contain}
-  .eqs .e .ph.fill{padding:0}
-  .eqs .e .ph.fill img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover}
-  .eqs .e .bd{padding:28px 30px 30px;display:flex;flex-direction:column;gap:14px;flex:1}
-  .eqs .e .br{display:flex;align-items:center;gap:10px}
-  .eqs .e .cat{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
-  .eqs .e h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.02em;line-height:1.2}
-  .eqs .e p{font-size:13.5px;color:var(--textSoft);line-height:1.7;flex:1}
-  .eqs .e .foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
-  .eqs .e .pr{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:#5B70FF}
-  .eqs .e .enq{display:inline-flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:#25D366;padding:11px 18px;border-radius:3px;box-shadow:0 0 14px rgba(37,211,102,0.3)}
+  /* ── Partners ── */
+  .partners-intro{font-size:15px;color:var(--textSoft);max-width:560px;line-height:1.7;margin-top:14px}
+  .brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-top:44px;background:var(--border)}
+  .brand-card{background:var(--surface);padding:40px 24px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;border-top:3px solid transparent}
+  .brand-card:first-child{border-top-color:var(--accent)}
+  .brand-card .bn{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.02em;color:var(--text)}
 
   /* ── Contact ── */
   .contact{background:var(--surface)}
@@ -195,8 +181,6 @@
   .popia-field label{font-size:12.5px;color:var(--muted);line-height:1.6;cursor:pointer}
 
   /* ── Footer legal links ── */
-  .foot-legal{display:flex;gap:18px;flex-wrap:wrap}
-  .foot-legal a{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.05em}
 
   @media (max-width:760px){
     nav .links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:#07090Ff2;backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:8px 24px 20px}
@@ -221,7 +205,7 @@
     <a href="#expertise">Expertise</a>
     <a href="#work">Work</a>
     <a href="#gallery">Gallery</a>
-    <a href="#equipment">Equipment</a>
+    <a href="#partners">Partners</a>
     <div class="nav-account" id="navAccount">
       <button class="nav-account-btn" id="acctBtn">Existing Customers <span class="car">▾</span></button>
       <div class="nav-account-menu" id="acctMenu">
@@ -351,22 +335,19 @@
   </div>
 </section>
 
-<!-- EQUIPMENT -->
-<section id="equipment">
+<!-- PARTNERS -->
+<section id="partners">
   <div class="wrap">
-    <div class="eyebrow">Equipment</div>
-    <div class="eqhead"><div class="h2">Buy or enquire.</div><p class="intro">Trusted brands Megan specifies and supplies. Tell her your venue and budget — she'll recommend only what you actually need.</p></div>
-    <div class="tabs"><button class="tb on" data-filter="all">All</button><button class="tb" data-filter="allen-heath">Allen &amp; Heath</button><button class="tb" data-filter="wharfedale">Wharfedale Pro</button><button class="tb" data-filter="sennheiser">Sennheiser</button></div>
-    <div class="eqs">
-      <div class="e" data-brand="allen-heath"><div class="ph"><img src="images/equipment/sq6.png" alt="Allen &amp; Heath SQ-6 Digital Mixer" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Allen &amp; Heath — Mixing Desk</span></div><h3>Allen &amp; Heath SQ-6 Digital Mixer</h3><p>48-channel, 96kHz digital console on the XCVI FPGA core. A workhorse for live sound — full processing, 8 multi-FX engines and a fast, intuitive workflow.</p><div class="foot"><span class="pr">POA</span><a class="enq" href="https://wa.me/27822534450?text=Hi%20Megan%2C%20I%27d%20like%20to%20enquire%20about%20the%20Allen%20%26%20Heath%20SQ-6%20Digital%20Mixer" target="_blank" rel="noopener noreferrer">Enquire</a></div></div></div>
-      <div class="e" data-brand="allen-heath"><div class="ph fill"><img src="images/equipment/avantis.jpg" alt="Allen &amp; Heath Avantis" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Allen &amp; Heath — Mixing Desk</span></div><h3>Allen &amp; Heath Avantis</h3><p>64-channel / 42-bus console with dual Full HD touchscreens and dLive-class processing. The step up for larger productions and touring work.</p><div class="foot"><span class="pr">POA</span><a class="enq" href="https://wa.me/27822534450?text=Hi%20Megan%2C%20I%27d%20like%20to%20enquire%20about%20the%20Allen%20%26%20Heath%20Avantis" target="_blank" rel="noopener noreferrer">Enquire</a></div></div></div>
-      <div class="e" data-brand="allen-heath"><div class="ph"><img src="images/equipment/dx168.png" alt="Allen &amp; Heath DX168 Stage Box" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Allen &amp; Heath — dSNAKE / Stage Rack</span></div><h3>Allen &amp; Heath DX168 Stage Box</h3><p>Rugged 16-in / 8-out portable expander with recallable preamps. Runs all your I/O to the desk over a single cable. Pairs with SQ and dLive.</p><div class="foot"><span class="pr">POA</span><a class="enq" href="https://wa.me/27822534450?text=Hi%20Megan%2C%20I%27d%20like%20to%20enquire%20about%20the%20Allen%20%26%20Heath%20DX168%20Stage%20Box" target="_blank" rel="noopener noreferrer">Enquire</a></div></div></div>
-      <div class="e" data-brand="allen-heath"><div class="ph"><img src="images/equipment/ar2412.png" alt="Allen &amp; Heath AR2412 AudioRack" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Allen &amp; Heath — dSNAKE / Stage Rack</span></div><h3>Allen &amp; Heath AR2412 AudioRack</h3><p>24-in / 12-out remote rack on the dSNAKE protocol — position your stage I/O up to 100m from the desk over one Cat5 cable. Qu, SQ and Avantis compatible.</p><div class="foot"><span class="pr">POA</span><a class="enq" href="https://wa.me/27822534450?text=Hi%20Megan%2C%20I%27d%20like%20to%20enquire%20about%20the%20Allen%20%26%20Heath%20AR2412%20AudioRack" target="_blank" rel="noopener noreferrer">Enquire</a></div></div></div>
-      <div class="e" data-brand="wharfedale"><div class="ph"><img src="images/equipment/titan-ax15.png" alt="Wharfedale Pro Titan-AX15" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Wharfedale Pro — Powered Speaker</span></div><h3>Wharfedale Pro Titan-AX15</h3><p>Bi-amplified 15-inch active loudspeaker with IRIS-X compression driver and Q-Bit DSP. Lightweight, IP54-rated and reliable for stage, install or mobile use.</p><div class="foot"><span class="pr">POA</span><a class="enq" href="https://wa.me/27822534450?text=Hi%20Megan%2C%20I%27d%20like%20to%20enquire%20about%20the%20Wharfedale%20Pro%20Titan-AX15" target="_blank" rel="noopener noreferrer">Enquire</a></div></div></div>
-      <div class="e" data-brand="wharfedale"><div class="ph"><img src="images/equipment/wla-210x.png" alt="Wharfedale Pro WLA-210X" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Wharfedale Pro — Line Array</span></div><h3>Wharfedale Pro WLA-210X</h3><p>Long-throw passive line array element with dual custom 10-inch drivers. Scalable coverage for larger venues and outdoor events.</p><div class="foot"><span class="pr">POA</span><a class="enq" href="https://wa.me/27822534450?text=Hi%20Megan%2C%20I%27d%20like%20to%20enquire%20about%20the%20Wharfedale%20Pro%20WLA-210X" target="_blank" rel="noopener noreferrer">Enquire</a></div></div></div>
-      <div class="e" data-brand="sennheiser"><div class="ph"><img src="images/equipment/ew-dx-835s.png" alt="Sennheiser EW-DX 835-S SET" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Sennheiser — Wireless Mic System</span></div><h3>Sennheiser EW-DX 835-S SET</h3><p>Dual-channel digital UHF handheld system with the renowned e835 capsule and EM 2 rackmount receiver. Auto-scan, Bluetooth sync, e-Ink displays. Megan is EW-DX trained.</p><div class="foot"><span class="pr">POA</span><a class="enq" href="https://wa.me/27822534450?text=Hi%20Megan%2C%20I%27d%20like%20to%20enquire%20about%20the%20Sennheiser%20EW-DX%20835-S%20SET" target="_blank" rel="noopener noreferrer">Enquire</a></div></div></div>
-      <div class="e" data-brand="sennheiser"><div class="ph"><img src="images/equipment/e835.png" alt="Sennheiser e835 Vocal Mic" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Sennheiser — Microphone</span></div><h3>Sennheiser e835 Vocal Mic</h3><p>Industry-standard cardioid dynamic vocal mic. Clear, present voice reproduction with strong feedback rejection — a reliable live workhorse.</p><div class="foot"><span class="pr">POA</span><a class="enq" href="https://wa.me/27822534450?text=Hi%20Megan%2C%20I%27d%20like%20to%20enquire%20about%20the%20Sennheiser%20e835%20Vocal%20Mic" target="_blank" rel="noopener noreferrer">Enquire</a></div></div></div>
-      <div class="e" data-brand="sennheiser"><div class="ph"><img src="images/equipment/d6000.png" alt="Sennheiser D6000 Series" loading="lazy"></div><div class="bd"><div class="br"><span class="cat">Sennheiser — Digital Wireless</span></div><h3>Sennheiser D6000 Series</h3><p>High-density digital wireless for demanding multi-channel productions. Maximum reliability where channel count and spectrum efficiency matter. Megan is D6000 trained.</p><div class="foot"><span class="pr">POA</span><a class="enq" href="https://wa.me/27822534450?text=Hi%20Megan%2C%20I%27d%20like%20to%20enquire%20about%20the%20Sennheiser%20D6000%20Series" target="_blank" rel="noopener noreferrer">Enquire</a></div></div></div>
+    <div class="eyebrow">Our Partners</div>
+    <div class="h2">Brands we work with.</div>
+    <p class="partners-intro">Trusted manufacturers Megan specifies, supplies and services. Logos coming soon.</p>
+    <div class="brand-grid">
+      <div class="brand-card"><span class="bn">Allen &amp; Heath</span></div>
+      <div class="brand-card"><span class="bn">Wharfedale Pro</span></div>
+      <div class="brand-card"><span class="bn">Sennheiser</span></div>
+      <div class="brand-card"><span class="bn">Audiosure</span></div>
+      <div class="brand-card"><span class="bn">Stage Audio Works</span></div>
+      <div class="brand-card"><span class="bn">DWR</span></div>
     </div>
   </div>
 </section>
@@ -418,6 +399,11 @@
       <div class="logo large"><div class="badge">MTS</div><div><div class="nm">Megan's Technical Services</div><div class="tg">Innovate · Illuminate · Captivate</div></div></div>
       <div class="foot-cols">
         <div>
+          <div class="lab">Legal</div>
+          <a href="documents/terms-and-conditions.pdf" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>
+          <a href="documents/popia.pdf" target="_blank" rel="noopener noreferrer">POPIA</a>
+        </div>
+        <div>
           <div class="lab">Contact</div>
           <a href="mailto:meganstechnicalservices@gmail.com">meganstechnicalservices@gmail.com</a>
           <a href="tel:0822534450">082 253 4450</a>
@@ -433,11 +419,7 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <div class="c">© 2025 Megan's Technical Services</div>
-      <div class="foot-legal">
-        <a href="documents/terms-and-conditions.pdf" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>
-        <a href="documents/popia.pdf" target="_blank" rel="noopener noreferrer">POPIA</a>
-      </div>
+      <div class="c">© 2026 Megan's Technical Services</div>
       <div class="c mono">Innovate · Illuminate · Captivate</div>
     </div>
   </div>
@@ -470,23 +452,6 @@
     if(!otherCheck || !otherField) return;
     otherCheck.addEventListener('change', function(){
       otherField.classList.toggle('show', otherCheck.checked);
-    });
-  })();
-
-  // Equipment brand filter tabs.
-  (function(){
-    var tabs = document.querySelectorAll('.tabs .tb');
-    var cards = document.querySelectorAll('.eqs .e');
-    tabs.forEach(function(tab){
-      tab.addEventListener('click', function(){
-        tabs.forEach(function(t){ t.classList.remove('on'); });
-        tab.classList.add('on');
-        var filter = tab.getAttribute('data-filter');
-        cards.forEach(function(card){
-          var show = filter === 'all' || card.getAttribute('data-brand') === filter;
-          card.style.display = show ? '' : 'none';
-        });
-      });
     });
   })();
 
@@ -549,8 +514,22 @@
         dots[d].classList.toggle('on', d === index);
       }
     }
-    prev.addEventListener('click', function(){ goTo(index-1); });
-    next.addEventListener('click', function(){ goTo(index+1); });
+    var AUTOPLAY_MS = 5000;
+    var timer = null;
+    function startAutoplay(){ timer = setInterval(function(){ goTo(index+1); }, AUTOPLAY_MS); }
+    function resetAutoplay(){ clearInterval(timer); startAutoplay(); }
+
+    prev.addEventListener('click', function(){ goTo(index-1); resetAutoplay(); });
+    next.addEventListener('click', function(){ goTo(index+1); resetAutoplay(); });
+    for(var d2=0; d2<dots.length; d2++){
+      dots[d2].addEventListener('click', resetAutoplay);
+    }
+    var carousel = document.getElementById('gallCarousel');
+    if(carousel){
+      carousel.addEventListener('mouseenter', function(){ clearInterval(timer); });
+      carousel.addEventListener('mouseleave', startAutoplay);
+    }
+    startAutoplay();
   })();
 
   // Contact form: open a pre-filled WhatsApp chat alongside the email submission.
