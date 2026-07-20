@@ -45,7 +45,7 @@
   .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 48px 0;position:relative;overflow:hidden;border-top:none}
   .hero .glow1{position:absolute;top:10%;right:-8%;width:700px;height:700px;background:radial-gradient(circle,#3D55F218 0%,transparent 65%);pointer-events:none}
   .hero .glow2{position:absolute;bottom:15%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,#1E2FA820 0%,transparent 65%);pointer-events:none}
-  .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(52px,9vw,104px);font-weight:800;letter-spacing:-0.04em;line-height:0.95;margin:0 0 16px}
+  .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(52px,9vw,104px);font-weight:800;letter-spacing:-0.04em;line-height:0.95;margin:0 0 16px;color:#fff}
   .hero .sub{font-size:17px;color:var(--textSoft);max-width:500px;line-height:1.75;margin:32px 0 52px}
   .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:72px}
   .btn-primary{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;background:linear-gradient(135deg,#3D55F2,#1E2FA8);padding:17px 34px;border-radius:4px;box-shadow:0 0 24px #3D55F250}
@@ -105,9 +105,9 @@
   /* ── Partners ── */
   .partners-intro{font-size:15px;color:var(--textSoft);max-width:560px;line-height:1.7;margin-top:14px}
   .brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-top:44px;background:var(--border)}
-  .brand-card{background:var(--surface);padding:40px 24px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;border-top:3px solid transparent}
+  .brand-card{background:#fff;padding:32px 24px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;border-top:3px solid transparent}
   .brand-card:first-child{border-top-color:var(--accent)}
-  .brand-card .bn{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.02em;color:var(--text)}
+  .brand-card img{max-width:100%;max-height:56px;object-fit:contain}
 
   /* ── Contact ── */
   .contact{background:var(--surface)}
@@ -342,12 +342,12 @@
     <div class="h2">Brands we work with.</div>
     <p class="partners-intro">Trusted manufacturers Megan specifies, supplies and services. Logos coming soon.</p>
     <div class="brand-grid">
-      <div class="brand-card"><span class="bn">Allen &amp; Heath</span></div>
-      <div class="brand-card"><span class="bn">Wharfedale Pro</span></div>
-      <div class="brand-card"><span class="bn">Sennheiser</span></div>
-      <div class="brand-card"><span class="bn">Audiosure</span></div>
-      <div class="brand-card"><span class="bn">Stage Audio Works</span></div>
-      <div class="brand-card"><span class="bn">DWR</span></div>
+      <div class="brand-card"><img src="images/partners/allen-heath.svg" alt="Allen &amp; Heath" loading="lazy"></div>
+      <div class="brand-card"><img src="images/partners/wharfedale-pro.png" alt="Wharfedale Pro" loading="lazy"></div>
+      <div class="brand-card"><img src="images/partners/sennheiser.svg" alt="Sennheiser" loading="lazy"></div>
+      <div class="brand-card"><img src="images/partners/audiosure.png" alt="Audiosure" loading="lazy"></div>
+      <div class="brand-card"><img src="images/partners/stage-audio-works.svg" alt="Stage Audio Works" loading="lazy"></div>
+      <div class="brand-card"><img src="images/partners/dwr.png" alt="DWR Distribution" loading="lazy"></div>
     </div>
   </div>
 </section>
