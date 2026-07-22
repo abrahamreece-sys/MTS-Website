@@ -34,8 +34,8 @@
   /* ── Nav ── */
   nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:16px 48px;display:flex;justify-content:space-between;align-items:center;background:#07090Ff2;backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
   nav .links{display:flex;gap:36px;align-items:center}
-  nav .links a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;font-weight:700}
-  .btn-quote{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,#3D55F2,#1E2FA8);padding:11px 22px;border-radius:4px;font-weight:700;box-shadow:0 0 16px #3D55F250}
+  nav .links a{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;font-weight:700}
+  .btn-quote{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,#3D55F2,#1E2FA8);padding:11px 22px;border-radius:4px;font-weight:700;box-shadow:0 0 16px #3D55F250}
   .hamb{display:none}
 
   section{padding:96px 48px;box-sizing:border-box;border-top:1px solid var(--border)}
@@ -103,11 +103,14 @@
 
   /* ── Partners ── */
   .partners-intro{font-size:15px;color:var(--textSoft);max-width:560px;line-height:1.7;margin-top:14px}
-  .brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-top:44px;background:var(--border)}
-  .brand-card{background:#fff;padding:32px 24px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;border-top:3px solid transparent}
+  .brand-marquee{margin-top:44px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .brand-track{display:flex;width:max-content;gap:2px;background:var(--border);animation:brandScroll 28s linear infinite}
+  .brand-marquee:hover .brand-track{animation-play-state:paused}
+  .brand-card{background:#fff;padding:32px 24px;min-height:120px;width:200px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;text-align:center;border-top:3px solid transparent}
   .brand-card:first-child{border-top-color:var(--accent)}
   .brand-card img{max-width:100%;max-height:68px;object-fit:contain}
   .brand-card img.lg{max-height:82px}
+  @keyframes brandScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* ── Contact ── */
   .contact{background:var(--surface)}
@@ -148,7 +151,7 @@
 
   /* ── Nav account menu ── */
   .nav-account{position:relative}
-  .nav-account-btn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;font-weight:700;background:transparent;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:5px}
+  .nav-account-btn{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;font-weight:700;background:transparent;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:5px}
   .nav-account-btn .car{font-size:9px;transition:transform 0.2s}
   .nav-account-btn.open .car{transform:rotate(180deg)}
   .nav-account-menu{position:absolute;top:calc(100% + 16px);right:0;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:8px;min-width:170px;display:none;flex-direction:column;gap:2px;box-shadow:0 12px 32px rgba(0,0,0,0.4);z-index:900}
@@ -342,13 +345,21 @@
     <div class="eyebrow">Our Partners</div>
     <div class="h2">Brands we work with.</div>
     <p class="partners-intro">Trusted manufacturers Megan specifies, supplies and services. Logos coming soon.</p>
-    <div class="brand-grid">
-      <div class="brand-card"><img src="images/partners/allen-heath.svg" alt="Allen &amp; Heath" loading="lazy"></div>
-      <div class="brand-card"><img class="lg" src="images/partners/wharfedale-pro.png" alt="Wharfedale Pro" loading="lazy"></div>
-      <div class="brand-card"><img src="images/partners/sennheiser.svg" alt="Sennheiser" loading="lazy"></div>
-      <a class="brand-card" href="https://audiosure.co.za/" target="_blank" rel="noopener noreferrer"><img src="images/partners/audiosure.png" alt="Audiosure" loading="lazy"></a>
-      <a class="brand-card" href="https://www.stageaudioworks.com/" target="_blank" rel="noopener noreferrer"><img src="images/partners/stage-audio-works.svg" alt="Stage Audio Works" loading="lazy"></a>
-      <a class="brand-card" href="https://dwrdistribution.co.za/" target="_blank" rel="noopener noreferrer"><img src="images/partners/dwr.png" alt="DWR Distribution" loading="lazy"></a>
+    <div class="brand-marquee">
+      <div class="brand-track">
+        <div class="brand-card"><img src="images/partners/allen-heath.svg" alt="Allen &amp; Heath" loading="lazy"></div>
+        <div class="brand-card"><img class="lg" src="images/partners/wharfedale-pro.png" alt="Wharfedale Pro" loading="lazy"></div>
+        <div class="brand-card"><img src="images/partners/sennheiser.svg" alt="Sennheiser" loading="lazy"></div>
+        <a class="brand-card" href="https://audiosure.co.za/" target="_blank" rel="noopener noreferrer"><img src="images/partners/audiosure.png" alt="Audiosure" loading="lazy"></a>
+        <a class="brand-card" href="https://www.stageaudioworks.com/" target="_blank" rel="noopener noreferrer"><img src="images/partners/stage-audio-works.svg" alt="Stage Audio Works" loading="lazy"></a>
+        <a class="brand-card" href="https://dwrdistribution.co.za/" target="_blank" rel="noopener noreferrer"><img src="images/partners/dwr.png" alt="DWR Distribution" loading="lazy"></a>
+        <div class="brand-card" aria-hidden="true"><img src="images/partners/allen-heath.svg" alt="" loading="lazy"></div>
+        <div class="brand-card" aria-hidden="true"><img class="lg" src="images/partners/wharfedale-pro.png" alt="" loading="lazy"></div>
+        <div class="brand-card" aria-hidden="true"><img src="images/partners/sennheiser.svg" alt="" loading="lazy"></div>
+        <a class="brand-card" href="https://audiosure.co.za/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/partners/audiosure.png" alt="" loading="lazy"></a>
+        <a class="brand-card" href="https://www.stageaudioworks.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/partners/stage-audio-works.svg" alt="" loading="lazy"></a>
+        <a class="brand-card" href="https://dwrdistribution.co.za/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/partners/dwr.png" alt="" loading="lazy"></a>
+      </div>
     </div>
   </div>
 </section>
