@@ -26,10 +26,11 @@
 
   /* ── Logo ── */
   .logo{display:flex;align-items:center;gap:10px}
-  .logo .badge{height:38px;flex-shrink:0}
-  .logo .badge img{height:100%;width:auto;display:block;border-radius:6px;box-shadow:0 0 20px #3D55F250}
+  .logo .badge{height:38px;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:visible}
+  .logo .badge img{height:76px;width:auto;display:block;border-radius:6px;box-shadow:0 0 20px #3D55F250}
   .logo .nm{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:-0.02em;line-height:1}
   .logo.large .badge{height:56px}
+  .logo.large .badge img{height:112px}
   .logo.large .nm{font-size:18px}
   .logo.large .tg{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px}
 
@@ -348,9 +349,9 @@
       <div class="brand-card"><img src="images/partners/allen-heath.svg" alt="Allen &amp; Heath" loading="lazy"></div>
       <div class="brand-card"><img class="lg" src="images/partners/wharfedale-pro.png" alt="Wharfedale Pro" loading="lazy"></div>
       <div class="brand-card"><img src="images/partners/sennheiser.svg" alt="Sennheiser" loading="lazy"></div>
-      <div class="brand-card"><img src="images/partners/audiosure.png" alt="Audiosure" loading="lazy"></div>
-      <div class="brand-card"><img src="images/partners/stage-audio-works.svg" alt="Stage Audio Works" loading="lazy"></div>
-      <div class="brand-card"><img src="images/partners/dwr.png" alt="DWR Distribution" loading="lazy"></div>
+      <a class="brand-card" href="https://audiosure.co.za/" target="_blank" rel="noopener noreferrer"><img src="images/partners/audiosure.png" alt="Audiosure" loading="lazy"></a>
+      <a class="brand-card" href="https://www.stageaudioworks.com/" target="_blank" rel="noopener noreferrer"><img src="images/partners/stage-audio-works.svg" alt="Stage Audio Works" loading="lazy"></a>
+      <a class="brand-card" href="https://dwrdistribution.co.za/" target="_blank" rel="noopener noreferrer"><img src="images/partners/dwr.png" alt="DWR Distribution" loading="lazy"></a>
     </div>
   </div>
 </section>
