@@ -26,9 +26,10 @@
 
   /* ── Logo ── */
   .logo{display:flex;align-items:center;gap:10px}
-  .logo .badge{width:38px;height:38px;border-radius:6px;flex-shrink:0;background:linear-gradient(135deg,#3D55F2,#1E2FA8);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px #3D55F250;font-family:'Space Grotesk',sans-serif;font-weight:800;color:#fff;font-size:13px;letter-spacing:-0.04em}
+  .logo .badge{height:38px;flex-shrink:0}
+  .logo .badge img{height:100%;width:auto;display:block;border-radius:6px;box-shadow:0 0 20px #3D55F250}
   .logo .nm{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:-0.02em;line-height:1}
-  .logo.large .badge{width:56px;height:56px;font-size:20px}
+  .logo.large .badge{height:56px}
   .logo.large .nm{font-size:18px}
   .logo.large .tg{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px}
 
@@ -107,7 +108,7 @@
   .brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-top:44px;background:var(--border)}
   .brand-card{background:#fff;padding:32px 24px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;border-top:3px solid transparent}
   .brand-card:first-child{border-top-color:var(--accent)}
-  .brand-card img{max-width:100%;max-height:56px;object-fit:contain}
+  .brand-card img{max-width:100%;max-height:68px;object-fit:contain}
 
   /* ── Contact ── */
   .contact{background:var(--surface)}
@@ -143,7 +144,8 @@
   .foot-bottom .c{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.05em}
 
   /* ── Floating WhatsApp ── */
-  .float-wa{position:fixed;right:22px;bottom:22px;z-index:850;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 22px;border-radius:999px;box-shadow:0 8px 28px rgba(37,211,102,0.45);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px}
+  .float-wa{position:fixed;right:22px;bottom:22px;z-index:850;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 22px;border-radius:999px;box-shadow:0 8px 28px rgba(37,211,102,0.45);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;opacity:1;pointer-events:auto;transition:opacity 0.3s ease}
+  .float-wa.hide{opacity:0;pointer-events:none}
 
   /* ── Nav account menu ── */
   .nav-account{position:relative}
@@ -200,7 +202,7 @@
 <body>
 
 <nav>
-  <div class="logo"><div class="badge">MTS</div><div class="nm">Megan's Technical Services</div></div>
+  <div class="logo"><div class="badge"><img src="images/mts-badge.png" alt="MTS"></div><div class="nm">Megan's Technical Services</div></div>
   <div class="links" id="navLinks">
     <a href="#expertise">Expertise</a>
     <a href="#work">Work</a>
@@ -223,7 +225,7 @@
   <div class="glow1"></div><div class="glow2"></div>
   <div style="max-width:1000px;position:relative">
     <div class="eyebrow">Sound Design &amp; Technical Production — KwaZulu-Natal, SA</div>
-    <h1>Innovate.<br>Illuminate.<br><span class="grad">Captivate.</span></h1>
+    <h1>Innovate.<br>Illuminate.<br>Captivate.</h1>
     <p class="sub">Complete system overhauls, live sound production, and acoustic treatment — built around your actual needs. Honest advice. Nothing unnecessary.</p>
     <div class="btn-row"><a href="#contact" class="btn-primary">Request a Quote</a><a href="#work" class="btn-ghost">See Past Work</a></div>
     <div class="pillars">
@@ -393,10 +395,10 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer id="siteFooter">
   <div class="wrap">
     <div class="foot-top">
-      <div class="logo large"><div class="badge">MTS</div><div><div class="nm">Megan's Technical Services</div><div class="tg">Innovate · Illuminate · Captivate</div></div></div>
+      <div class="logo large"><div class="badge"><img src="images/mts-badge.png" alt="MTS"></div><div><div class="nm">Megan's Technical Services</div><div class="tg">Innovate · Illuminate · Captivate</div></div></div>
       <div class="foot-cols">
         <div>
           <div class="lab">Legal</div>
@@ -453,6 +455,19 @@
     otherCheck.addEventListener('change', function(){
       otherField.classList.toggle('show', otherCheck.checked);
     });
+  })();
+
+  // Fade the floating WhatsApp button out once the footer scrolls into view.
+  (function(){
+    var btn = document.querySelector('.float-wa');
+    var footer = document.getElementById('siteFooter');
+    if(!btn || !footer || !('IntersectionObserver' in window)) return;
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        btn.classList.toggle('hide', entry.isIntersecting);
+      });
+    }, {threshold: 0});
+    observer.observe(footer);
   })();
 
   // Mobile hamburger nav toggle.
